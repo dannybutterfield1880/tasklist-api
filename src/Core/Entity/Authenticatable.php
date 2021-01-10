@@ -1,6 +1,8 @@
 <?php 
 
-namespace Core\Model;
+namespace Core\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Authentication related entity (model) methods and props
@@ -13,14 +15,66 @@ class Authenticatable extends Entity {
     protected $password;
 
     /**
-     * @ORM\Column(type="string")
-     */
-    protected $salt;
-
-    /**
      * @var \DateTime $created_at
      *
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     protected $lastSignOn;
+
+    /**
+     * Set the value of password
+     *
+     * @return  self
+     */ 
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get $created_at
+     *
+     * @return  \DateTime
+     */ 
+    public function getLastSignOn()
+    {
+        return $this->lastSignOn;
+    }
+
+    /**
+     * Set $created_at
+     *
+     * @param  \DateTime  $lastSignOn  $created_at
+     *
+     * @return  self
+     */ 
+    public function setLastSignOn(\DateTime $lastSignOn)
+    {
+        $this->lastSignOn = $lastSignOn;
+
+        return $this;
+    }
+
+    static function askForPasswordCli($prompt = "Enter Password: ") {
+        echo $prompt;
+    
+        system('stty -echo');
+    
+        $password = trim(fgets(STDIN));
+    
+        system('stty echo');
+    
+        return $password;
+    }
+    
+    static function hashPassword($plainPassword) {
+      return password_hash($plainPassword, PASSWORD_BCRYPT); 
+    }
+
+    public function verifyUsersPassword($plainPassword) {
+        // Verify the hash against the password entered 
+        return password_verify($plainPassword, $this->password); 
+    }
 }

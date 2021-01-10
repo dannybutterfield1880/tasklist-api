@@ -1,0 +1,139 @@
+doctrine:
+  dbal:
+    driver: pdo_mysql
+    host: '127.0.0.1'
+    port: '3306'
+    dbname: 'tasklists'
+    user: 'root'
+    password: 'Butterf1eld'
+
+    # # orm:
+    #     default_entity_manager: ~ # The first defined is used if not set
+
+    #     # Auto generate mode possible values are: "NEVER", "ALWAYS", "FILE_NOT_EXISTS", "EVAL"
+    #     auto_generate_proxy_classes:  false
+    #     #proxy_dir:                    "%kernel.cache_dir%/doctrine/orm/Proxies"
+    #     #proxy_namespace:              Proxies
+    #     entity_managers:
+
+    #         # A collection of different named entity managers (e.g. some_em, another_em)
+    #         some_em:
+    #             # query_cache_driver:
+    #             #     type: ~
+    #             #     id:   ~
+    #             #     pool: ~
+    #             # metadata_cache_driver:
+    #             #     type: ~
+    #             #     id:   ~
+    #             #     pool: ~
+    #             # result_cache_driver:
+    #             #     type: ~
+    #             #     id:   ~
+    #             #     pool: ~
+    #             # entity_listeners:
+    #                 entities:
+
+    #                     # example
+    #                     Acme\HelloBundle\Entity\Author:
+    #                         listeners:
+
+    #                             # example
+    #                             Acme\HelloBundle\EventListener\ExampleListener:
+    #                                 events:
+    #                                     type:                 preUpdate
+    #                                     method:               preUpdate
+
+    #             # The name of a DBAL connection (the one marked as default is used if not set)
+    #             connection:           ~
+    #             class_metadata_factory_name:  Doctrine\ORM\Mapping\ClassMetadataFactory
+    #             default_repository_class:     Doctrine\ORM\EntityRepository
+    #             auto_mapping:                 false
+    #             naming_strategy:              doctrine.orm.naming_strategy.default
+    #             quote_strategy:               doctrine.orm.quote_strategy.default
+    #             entity_listener_resolver:     ~
+    #             repository_factory:           ~
+    #             second_level_cache:
+    #                 region_cache_driver:
+    #                     type: ~
+    #                     id:   ~
+    #                     pool: ~
+    #                 region_lock_lifetime: 60
+    #                 log_enabled:          true
+    #                 region_lifetime:      0
+    #                 enabled:              true
+    #                 factory:              ~
+    #                 regions:
+
+    #                     # Prototype
+    #                     name:
+    #                         cache_driver:
+    #                             type: ~
+    #                             id:   ~
+    #                             pool: ~
+    #                         lock_path:            '%kernel.cache_dir%/doctrine/orm/slc/filelock'
+    #                         lock_lifetime:        60
+    #                         type:                 default
+    #                         lifetime:             0
+    #                         service:              ~
+    #                         name:                 ~
+    #                 loggers:
+
+    #                     # Prototype
+    #                     # name:
+    #                     #     name:                 ~
+    #                     #     service:              ~
+
+    #             # An array of hydrator names
+    #             hydrators:
+
+    #                 # example
+    #                 #ListHydrator: Acme\HelloBundle\Hydrators\ListHydrator
+
+    #             # mappings:
+    #             #     # An array of mappings, which may be a bundle name or something else
+    #             #     mapping_name:
+    #             #         mapping:              true
+    #             #         type:                 ~
+    #             #         dir:                  ~
+    #             #         alias:                ~
+    #             #         prefix:               ~
+    #             #         is_bundle:            ~
+
+    #             dql:
+    #                 # A collection of string functions
+    #                 # string_functions:
+
+    #                 #     # example
+    #                 #     # test_string: Acme\HelloBundle\DQL\StringFunction
+
+    #                 # # A collection of numeric functions
+    #                 # numeric_functions:
+
+    #                 #     # example
+    #                 #     # test_numeric: Acme\HelloBundle\DQL\NumericFunction
+
+    #                 # # A collection of datetime functions
+    #                 # datetime_functions:
+
+    #                 #     # example
+    #                 #     # test_datetime: Acme\HelloBundle\DQL\DatetimeFunction
+
+    #             # Register SQL Filters in the entity manager
+    #             filters:
+
+    #                 # # An array of filters
+    #                 # some_filter:
+    #                 #     class:                Acme\HelloBundle\Filter\SomeFilter # Required
+    #                 #     enabled:              false
+
+    #                 #     # An array of parameters
+    #                 #     parameters:
+
+    #                 #         # example
+    #                 #         foo_param:              bar_value
+
+    #     # Search for the "ResolveTargetEntityListener" class for a cookbook about this
+    #     resolve_target_entities:
+
+    #         # Prototype
+    #         # Acme\InvoiceBundle\Model\InvoiceSubjectInterface: Acme\AppBundle\Entity\Customer

@@ -15,5 +15,4 @@ $controllerClass = 'Core\\Controller\\'.$controllerName;
 $controller = new $controllerClass();
 
 $controller->$method($param);
-
 ?>  
