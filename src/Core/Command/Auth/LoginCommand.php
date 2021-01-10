@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Command;
+namespace Core\Command\Auth;
 
 use Core\Entity\User;
 use DateTime;

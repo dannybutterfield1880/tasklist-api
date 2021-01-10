@@ -53,11 +53,11 @@ class Comment extends Entity {
     protected $replyRespondant;
 
     /**
-     * @ORM\Column(type="boolean", options={"default" : 0})
+     * @ORM\Column(type="boolean")
      *
      * @var bool $liked
      */
-    protected $liked = false;
+    protected $liked;
 
     /**
      * @ORM\OneToMany(targetEntity="Core\Entity\Attachment", mappedBy="commentAttachedTo")

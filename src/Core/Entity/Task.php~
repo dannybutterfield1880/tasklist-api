@@ -44,6 +44,13 @@ class Task extends Entity {
     protected $priority = 'low';
 
     /**
+     * @ORM\Column(type="boolean")
+     * 
+     * @var String $liked 
+     */
+    protected $liked = false;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Core\Entity\User", inversedBy="createdTasks")
      *
      * @var User $user
@@ -389,29 +396,5 @@ class Task extends Entity {
     public function getAttachments()
     {
         return $this->attachments;
-    }
-
-    /**
-     * Set completed.
-     *
-     * @param bool $completed
-     *
-     * @return Task
-     */
-    public function setCompleted($completed)
-    {
-        $this->completed = $completed;
-
-        return $this;
-    }
-
-    /**
-     * Get completed.
-     *
-     * @return bool
-     */
-    public function getCompleted()
-    {
-        return $this->completed;
     }
 }

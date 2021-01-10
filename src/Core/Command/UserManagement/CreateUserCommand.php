@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Command;
+namespace Core\Command\UserManagement;
 
 use Core\Entity\User;
 use DateTime;
@@ -11,10 +11,16 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
+/**
+ * Create new user command
+ * 
+ * um:create-user
+ * 
+ */
 class CreateUserCommand extends Command
 {
     // the name of the command (the part after "bin/console")
-    protected static $defaultName = 'app:create-user';
+    protected static $defaultName = 'users:create-user';
     private $entityManager;
 
     public function __construct(EntityManager $entityManager)
