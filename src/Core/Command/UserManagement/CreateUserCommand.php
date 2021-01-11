@@ -41,7 +41,6 @@ class CreateUserCommand extends Command
         // the "--help" option
         ->setHelp('This command allows you to create a user...')
         ->addArgument('username', InputArgument::REQUIRED, 'Username')
-        ->addArgument('password', InputArgument::REQUIRED, 'Password')
         ->addArgument('firstName', InputArgument::REQUIRED, 'First name')
         ->addArgument('lastName', InputArgument::REQUIRED, 'Last name')
         ->addArgument('email', InputArgument::REQUIRED, 'Email');
@@ -63,7 +62,6 @@ class CreateUserCommand extends Command
 
         $password = $helper->ask($input, $output, $question);
 
-        dump($this->entityManager);
         $args = $input->getArguments();
 
         $user = new User();

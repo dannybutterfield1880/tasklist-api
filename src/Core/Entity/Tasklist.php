@@ -42,6 +42,11 @@ class Tasklist extends Entity {
         $this->tasks = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->id; 
+    }
+
     /**
      * Set name.
      *

@@ -1,11 +1,14 @@
 <?php
+
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
-
 use Doctrine\DBAL\Logging\DebugStack;
-use Doctrine\Common\Proxy\Autoloader;
 
-
+/**
+ * create, configure and return an instance of the Doctrine EntityManager
+ * 
+ * @return EntityManager
+ */
 function makeEntityManager() {
     $isDevMode = true;
     $proxyDir = null;
@@ -13,16 +16,14 @@ function makeEntityManager() {
 
     $logger = new DebugStack();
     $useSimpleAnnotationReader = false;
-    dump($_ENV);
     
     if ('development' == "development") {
         $cache = new \Doctrine\Common\Cache\ArrayCache;
     } else {
         $cache = new \Doctrine\Common\Cache\ApcuCache;
     }
-
+    
     $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src"), $isDevMode, $proxyDir, $cache, $useSimpleAnnotationReader);
-    // or if you prefer yaml or XML
     //$config = Setup::createXMLMetadataConfiguration(array(__DIR__."/config/xml"), $isDevMode);
     //$config = Setup::createYAMLMetadataConfiguration(array(__DIR__."/config/yaml"), $isDevMode);
     $config->setMetadataCacheImpl($cache);
@@ -32,9 +33,9 @@ function makeEntityManager() {
     // $config->setProxyDir($proxyDir);
     // $config->setProxyNamespace($proxyNamespace);
 
-
     $config->setSQLLogger($logger);
-    // database configuration parameters
+
+    // database configuration
     $conn = array(
         'driver' => 'pdo_mysql',
         'host' => "127.0.0.1",
@@ -44,6 +45,33 @@ function makeEntityManager() {
         "dbname" => "tasklists"
     );
 
-    // obtaining the entity manager
+    // return the EntityManager
     return EntityManager::create($conn, $config);
+}
+
+/**
+ * Take a url path and return controller class, method to call and params to pass
+ *
+ * @param string $path //url path (i.e /user/load/1 | /{controller}/{method}/{param1}/{param2})
+ * @return array ["controller class", "method to call", "params to pass"] 
+ */
+function parseUrlString($path) {
+
+    $pathExplode = explode('/', $path);
+    $controllerTitle = ucfirst($pathExplode[0]);
+    $controllerName = $controllerTitle.'Controller';
+    $method = $pathExplode[1] . $controllerTitle . 'Action';
+    
+    unset($pathExplode[0]);
+    unset($pathExplode[1]);
+    
+    $params = $pathExplode;
+
+    require_once(__DIR__.'/src/Core/Controller/'.$controllerName.'.php');
+
+    return [
+        'Core\\Controller\\'.$controllerName,
+        $method,
+        $params
+    ];
 }

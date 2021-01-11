@@ -1,18 +1,20 @@
 <?php
-require __DIR__.'/bootstrap.php';
 
-$pathExplode = explode('/', $_GET['url']);
+/**
+ * @var ClassLoader $loader
+ */
+$loader = require __DIR__.'/vendor/autoload.php';
+include __DIR__.'/bootstrap.php';
 
-$controllerTitle = ucfirst($pathExplode[0]);
-$controllerName = $controllerTitle.'Controller';
-$method = $pathExplode[1] . $controllerTitle . 'Action';
-$param = $pathExplode[2];
+use Brick\Http\Request;
+use Brick\Http\Response;
 
-require_once(__DIR__.'/src/Core/Controller/'.$controllerName.'.php');
+//parse url string and return controller, method and param
+[$controllerClass, $method, $params] = parseUrlString($_GET['url']);
 
-$controllerClass = 'Core\\Controller\\'.$controllerName;
+/** @var Controller $controller */
+$controller = new $controllerClass($entityManager, new Request, new Response, $serializer);
 
-$controller = new $controllerClass();
+$controller->$method(...$params);
 
-$controller->$method($param);
 ?>  

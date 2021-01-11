@@ -57,7 +57,14 @@ class Comment extends Entity {
      *
      * @var bool $liked
      */
-    protected $liked = false;
+    protected $liked = false; //TODO change to onetoone with user
+
+    /**
+     * Many Users have Many Groups.
+     * @ORM\ManyToMany(targetEntity="Core\Entity\User", inversedBy="likeComments")
+     * @ORM\JoinTable(name="users_liked_comments")
+     */
+    protected $userLikes;
 
     /**
      * @ORM\OneToMany(targetEntity="Core\Entity\Attachment", mappedBy="commentAttachedTo")
@@ -347,5 +354,41 @@ class Comment extends Entity {
     public function getAttachments()
     {
         return $this->attachments;
+    }
+
+    /**
+     * Add userLike.
+     *
+     * @param \Core\Entity\User $userLike
+     *
+     * @return Comment
+     */
+    public function addUserLike(\Core\Entity\User $userLike)
+    {
+        $this->userLikes[] = $userLike;
+
+        return $this;
+    }
+
+    /**
+     * Remove userLike.
+     *
+     * @param \Core\Entity\User $userLike
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeUserLike(\Core\Entity\User $userLike)
+    {
+        return $this->userLikes->removeElement($userLike);
+    }
+
+    /**
+     * Get userLikes.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUserLikes()
+    {
+        return $this->userLikes;
     }
 }

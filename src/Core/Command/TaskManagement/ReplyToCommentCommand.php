@@ -13,9 +13,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-class CommentOnTaskCommand extends Command
+class ReplyToCommentCommand extends Command
 {
-    protected static $defaultName = 'tasks:make-comment';
+    protected static $defaultName = 'tasks:reply-to-comment';
     private $entityManager;
 
     public function __construct(EntityManager $entityManager)
@@ -29,11 +29,11 @@ class CommentOnTaskCommand extends Command
     protected function configure()
     {
         $this
-            ->setDescription('Make a comment on a task and also have the change the priority, flagged and completed')
-            ->setHelp('This command will add a comment to a task and give the creator a chance to update some attributes on the task')
+            ->setDescription('Reply to a comment and also have the option to like the comment')
+            ->setHelp('This command will reply to a comment and also give the creator the option of liking the comment')
             ->addArgument('creator', InputArgument::REQUIRED, 'Username of creator')
-            ->addArgument('task', InputArgument::REQUIRED, 'id of the task to add a comment to')
-            ->addArgument('message', InputArgument::REQUIRED, 'Message for the comment');
+            ->addArgument('comment', InputArgument::REQUIRED, 'id of the task to add a comment to')
+            ->addArgument('message', InputArgument::REQUIRED, 'Message for the reply');
 
             // add a question asking if the user would like to create some
             // initial tasks straight away in the command
@@ -50,73 +50,43 @@ class CommentOnTaskCommand extends Command
         ]);
 
         //check if tasklist already exists with this name 
-        $task = $this->entityManager->getRepository(\Core\Entity\Task::class)->find($args['task']);
+        $comment = $this->entityManager->getRepository(\Core\Entity\Comment::class)->find($args['comment']);
 
 
-        if ($task === null) {
-            $io->error('the task you are trying to comment on doesn\'t exist');
-            return Command::ERROR;
+        if ($comment === null) {
+            $io->error('the comment you are trying to reply to doesn\'t exist');
             exit;
         }
 
-        $questionRows = [
-            [
-                'name' => 'priority',
-                'text' => 'Do you want to change the priority of the task?',
-                "options" => ['no', 'low', 'medium', 'high', 'urgent', 'there-is-a-fire']
-            ],
-            [
-                'name' => 'flagged',
-                'text' => 'Do you want to flag this task?',
-                "options" => ['no', 'yes!']
-            ],
-            [
-                "name" => 'completed',
-                'text' => 'Have you completed this task?',
-                "options" => ['no', 'yes!']
-            ],
-        ];
+        $question = new ChoiceQuestion(
+            "Would you like to like the comment to?",
+            ['n', 'y'],
+            0
+        );
 
-        $questionAnswers = [];
         $helper = $this->getHelper('question');
 
-        foreach($questionRows as $questionRow) {
-            $question = new ChoiceQuestion(
-                $questionRow['text'],
-                $questionRow['options'],
-                0
-            );
+        $answer = $helper->ask($input, $output, $question);
 
-            if (in_array('no', $questionAnswers)) {
-                exit;
-            }
-
-            $questionAnswers[$questionRow['name']] = $helper->ask($input, $output, $question);
-        }
-
-        $comment = new \Core\Entity\Comment();
-        $comment
+        $reply = new \Core\Entity\Comment();
+        $reply
             ->setMessage($args['message'])
+            ->setCreator($creator)
+            ->setReplyRespondant($comment)
             ->setCreatedAt(new DateTime('now'));
-
-        $task->addComment($comment); 
-
-        foreach ($questionAnswers as $name => $questionAnswer) {
-            if ($questionAnswer === 'no') {
-                return;
-            }
-            $setter = sprintf('set%s', ucfirst($name));
-            $task->$setter($questionAnswer);
+    
+        if ($answer === 'y') {
+            //$comment->addComment($comment); 
         }
 
+        $this->entityManager->persist($reply);
         $this->entityManager->persist($comment);
-        $this->entityManager->persist($task);
         $this->entityManager->flush();
 
-        $io->success(sprintf('Comment %s made by %s on task %s', 
+        $io->success(sprintf('Reply %s made by %s on comment %s', 
             $args['message'], 
             $creator->getUsername(),
-            $args['task']
+            $args['comment']
         ));
 
         return Command::SUCCESS;

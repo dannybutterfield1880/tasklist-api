@@ -3,8 +3,12 @@
 <?php
 // application.php
 
-require __DIR__.'/../vendor/autoload.php';
-include __DIR__."/../helpers.php";
+
+/**
+ * @var ClassLoader $loader
+ */
+$loader = require_once __DIR__.'/../vendor/autoload.php';
+require __DIR__."/../helpers.php";
 
 use Core\Command\UserManagement\CreateUserCommand;
 
@@ -14,9 +18,11 @@ use Core\Command\TasklistManagement\AddTaskToTasklistCommand;
 use Core\Command\TasklistManagement\ListTasklistsTasksCommand;
 
 use Core\Command\TaskManagement\CommentOnTaskCommand;
-
+use Core\Command\TaskManagement\ReplyToCommentCommand;
 use Symfony\Component\Console\Application;
+use Doctrine\Common\Annotations\AnnotationRegistry;
 
+AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
 
 // obtaining the entity manager
 $entityManager = makeEntityManager();
@@ -52,5 +58,6 @@ $application->add(new ListTasklistsTasksCommand($entityManager));
  * tasks:
  */
 $application->add(new CommentOnTaskCommand($entityManager));
+$application->add(new ReplyToCommentCommand($entityManager));
 
 $application->run();

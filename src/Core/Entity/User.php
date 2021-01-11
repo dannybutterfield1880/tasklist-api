@@ -4,6 +4,7 @@ namespace Core\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity(repositoryClass="Core\Repository\UserRepository")
@@ -12,6 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class User extends Authenticatable {
 
     /**
+     *
      * @ORM\Column(type="string")
      */
     protected $username;
@@ -44,7 +46,7 @@ class User extends Authenticatable {
     protected $createdTasks;
 
     /**
-     * @ORM\OneToMany(targetEntity="Core\Entity\Task", mappedBy="asignee")
+     * @ORM\OneToMany(targetEntity="Core\Entity\Task", mappedBy="assignee")
      * @var Task[] An ArrayCollection of Task objects.
      */
     protected $assignedTasks;
@@ -55,15 +57,22 @@ class User extends Authenticatable {
      */
     protected $commentsMade;
 
+    /**
+     * Many Groups have Many Users.
+     * @ORM\ManyToMany(targetEntity="Core\Entity\Comment", mappedBy="userLikes")
+     */
+    protected $likedComments;
+
      /**
      * Constructor
      */
     public function __construct()
     {
-        $this->createdTasklists = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->createdTasks = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->assignedTasks = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->commentsMade = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createdTasklists = new ArrayCollection();
+        $this->createdTasks = new ArrayCollection();
+        $this->assignedTasks = new ArrayCollection();
+        $this->commentsMade = new ArrayCollection();
+        $this->likedComments = new ArrayCollection();
     }
 
     /**
@@ -410,5 +419,41 @@ class User extends Authenticatable {
     public function getCommentsMade()
     {
         return $this->commentsMade;
+    }
+
+    /**
+     * Add likedComment.
+     *
+     * @param \Core\Entity\Comment $likedComment
+     *
+     * @return User
+     */
+    public function addLikedComment(\Core\Entity\Comment $likedComment)
+    {
+        $this->likedComments[] = $likedComment;
+
+        return $this;
+    }
+
+    /**
+     * Remove likedComment.
+     *
+     * @param \Core\Entity\Comment $likedComment
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeLikedComment(\Core\Entity\Comment $likedComment)
+    {
+        return $this->likedComments->removeElement($likedComment);
+    }
+
+    /**
+     * Get likedComments.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLikedComments()
+    {
+        return $this->likedComments;
     }
 }

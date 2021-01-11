@@ -4,6 +4,7 @@ namespace Core\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation as Serializer;
 
 /**
  * Entity
@@ -31,6 +32,7 @@ class Entity
     /**
      * @var integer
      *
+     * @Serializer\Ignore()
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")

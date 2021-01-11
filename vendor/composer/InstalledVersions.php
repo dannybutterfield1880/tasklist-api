@@ -24,16 +24,25 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '1ab09db764a4bd75efe2931765fe794e8f95e441',
     'name' => 'dannybutterfield1880/tasklist-api',
   ),
   'versions' => 
   array (
+    'brick/http' => 
+    array (
+      'pretty_version' => '0.3.1',
+      'version' => '0.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2a49fc9e43dc465634b6d281a8e15ec46d5b00a6',
+    ),
     'composer/package-versions-deprecated' => 
     array (
       'pretty_version' => '1.11.99.1',
@@ -45,12 +54,12 @@ private static $installed = array (
     ),
     'dannybutterfield1880/tasklist-api' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '1ab09db764a4bd75efe2931765fe794e8f95e441',
     ),
     'doctrine/annotations' => 
     array (
@@ -167,6 +176,15 @@ private static $installed = array (
       ),
       'reference' => 'b7ce3b176482dbbc1245ebf52b181af44c2cf55f',
     ),
+    'psr/log' => 
+    array (
+      'pretty_version' => '1.1.3',
+      'version' => '1.1.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0f73288fd15629204f9d42b7055f72dacbe811fc',
+    ),
     'psr/log-implementation' => 
     array (
       'provided' => 
@@ -182,6 +200,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '47c02526c532fb381374dab26df05e7313978976',
+    ),
+    'symfony/deprecation-contracts' => 
+    array (
+      'pretty_version' => 'v2.2.0',
+      'version' => '2.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5fa56b4074d1ae755beb55617ddafe6f5d78f665',
     ),
     'symfony/polyfill-ctype' => 
     array (
@@ -237,6 +264,33 @@ private static $installed = array (
       ),
       'reference' => 'dc3063ba22c2a1fd2f45ed856374d79114998f91',
     ),
+    'symfony/property-access' => 
+    array (
+      'pretty_version' => 'v5.2.1',
+      'version' => '5.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '243dcdda2f276cb31efa31a015d0fdb5076931ce',
+    ),
+    'symfony/property-info' => 
+    array (
+      'pretty_version' => 'v5.2.1',
+      'version' => '5.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f65694a05eb7742c5f2951f20676de367ffaaaea',
+    ),
+    'symfony/serializer' => 
+    array (
+      'pretty_version' => 'v5.2.1',
+      'version' => '5.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4af81510bb603a6d255691a88e118add2bba6337',
+    ),
     'symfony/service-contracts' => 
     array (
       'pretty_version' => 'v2.2.0',
@@ -263,15 +317,6 @@ private static $installed = array (
       array (
       ),
       'reference' => '13e7e882eaa55863faa7c4ad7c60f12f1a8b5089',
-    ),
-    'symfony/yaml' => 
-    array (
-      'pretty_version' => 'v2.8.52',
-      'version' => '2.8.52.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '02c1859112aa779d9ab394ae4f3381911d84052b',
     ),
   ),
 );
