@@ -48,7 +48,7 @@ class NewTasklistCommand extends Command
             'username' => $args['creator']
         ]);
 
-        //check if tasklist already exists with this name 
+        //check if tasklist already exists with this name
         $tasklist = $this->entityManager->getRepository(\Core\Entity\Tasklist::class)->findOneBy([
             'name' => $args['name'],
             'creator' => $creator,
@@ -56,7 +56,6 @@ class NewTasklistCommand extends Command
 
         if ($tasklist !== null) {
             $io->error('You already have a tasklist with this name');
-            return Command::ERROR;
             exit;
         }
 

@@ -44,25 +44,22 @@ class ListTasklistsTasksCommand extends Command
 
         $args = $input->getArguments();
 
-        //check if tasklist already exists with this name 
+        //check if tasklist already exists with this name
         $tasklist = $this->entityManager->getRepository(\Core\Entity\Tasklist::class)->findOneBy([
             'name' => $args['tasklist']
         ]);
 
         if ($tasklist === null) {
             $io->error(sprintf('tasklist %s doesn\'t exist', $args['tasklist']));
-            return Command::ERROR;
             exit;
         }
 
-        $helper = $this->getHelper('question');
-
         $tasklistRows = $this->entityManager
-                        ->getRepository(\Core\Entity\Tasklist::class)
+                        ->getRepository(Tasklist::class)
                         ->getTasklistsRowsForCommandLine($tasklist->getTasks());
-    
+
         $io->table(
-            ['done', $args['tasklist'], 'priority', 'flagged'],
+            ['id', 'done', $args['tasklist'], 'priority', 'flagged'], //table headers
             $tasklistRows
         );
 

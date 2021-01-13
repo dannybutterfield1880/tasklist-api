@@ -49,14 +49,13 @@ class AddTaskToTasklistCommand extends Command
             'username' => $args['creator']
         ]);
 
-        //check if tasklist already exists with this name 
+        //check if tasklist already exists with this name
         $tasklist = $this->entityManager->getRepository(\Core\Entity\Tasklist::class)->findOneBy([
             'name' => $args['tasklist']
         ]);
 
         if ($tasklist === null) {
             $io->error(sprintf('tasklist %s doesn\'t exist', $args['tasklist']));
-            return Command::ERROR;
             exit;
         }
 
@@ -80,11 +79,11 @@ class AddTaskToTasklistCommand extends Command
         $this->entityManager->persist($newTask);
         $this->entityManager->flush();
 
-        $io->success(sprintf('Task %s has been added to %s succefully by %s, %s a description.', 
-            $args['title'], 
-            $args['tasklist'], 
+        $io->success(sprintf('Task %s has been added to %s succefully by %s, %s a description.',
+            $args['title'],
+            $args['tasklist'],
             $creator->getUsername(),
-            ($newTask->getDescription !== null) ? 'with' : 'without' 
+            ($newTask->getDescription !== null) ? 'with' : 'without'
         ));
 
         return Command::SUCCESS;

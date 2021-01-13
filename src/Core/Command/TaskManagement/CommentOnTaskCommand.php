@@ -49,13 +49,12 @@ class CommentOnTaskCommand extends Command
             'username' => $args['creator']
         ]);
 
-        //check if tasklist already exists with this name 
+        //check if tasklist already exists with this name
         $task = $this->entityManager->getRepository(\Core\Entity\Task::class)->find($args['task']);
 
 
         if ($task === null) {
             $io->error('the task you are trying to comment on doesn\'t exist');
-            return Command::ERROR;
             exit;
         }
 
@@ -87,9 +86,9 @@ class CommentOnTaskCommand extends Command
                 0
             );
 
-            if (in_array('no', $questionAnswers)) {
-                exit;
-            }
+//            if (in_array('no', $questionAnswers)) {
+//                continue;
+//            }
 
             $questionAnswers[$questionRow['name']] = $helper->ask($input, $output, $question);
         }
@@ -99,22 +98,24 @@ class CommentOnTaskCommand extends Command
             ->setMessage($args['message'])
             ->setCreatedAt(new DateTime('now'));
 
-        $task->addComment($comment); 
+        $task->addComment($comment);
 
         foreach ($questionAnswers as $name => $questionAnswer) {
-            if ($questionAnswer === 'no') {
-                return;
-            }
             $setter = sprintf('set%s', ucfirst($name));
-            $task->$setter($questionAnswer);
+            if ($questionAnswer === 'yes!' || $questionAnswer === "no") {
+                $task->$setter($questionAnswer === 'yes!');
+            } else {
+                $task->$setter($questionAnswer);
+            }
+
         }
 
         $this->entityManager->persist($comment);
         $this->entityManager->persist($task);
         $this->entityManager->flush();
 
-        $io->success(sprintf('Comment %s made by %s on task %s', 
-            $args['message'], 
+        $io->success(sprintf('Comment %s made by %s on task %s',
+            $args['message'],
             $creator->getUsername(),
             $args['task']
         ));

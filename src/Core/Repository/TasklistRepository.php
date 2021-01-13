@@ -11,19 +11,21 @@ namespace Core\Repository;
 class TasklistRepository extends \Doctrine\ORM\EntityRepository
 {
 
-    public function getTasklistsRowsForCommandLine(iterable $tasks = []) {
+    public function getTasklistsRowsForCommandLine(iterable $tasks = []): array
+    {
         $taskTableRows = [];
-    
+
         foreach ($tasks as $task) {
             $taskTableRows[] = [
-                $task->getCompleted() ? '✔' : '⃞',
-                $task->getTitle(), 
-                $task->getPriority(), 
-                $task->getFlagged() ? '⚑' : '⚐'
+                $task->getId(),
+                $task->getCompleted() ? ' ✔' : ' ■',
+                $task->getTitle(),
+                $task->getPriority(),
+                $task->getFlagged() ? '   ⚑' : '   ⚐'
             ];
             $taskTableRows[] = [''];
         }
-    
+
         return $taskTableRows;
     }
 }

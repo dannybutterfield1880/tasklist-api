@@ -2,9 +2,11 @@
 
 namespace Core\Command\Auth;
 
+use Cassandra\Date;
 use Core\Entity\User;
 use DateTime;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\ORMException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -41,7 +43,7 @@ class LoginCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io = new SymfonyStyle($input, $output);
-        
+
         $helper = $this->getHelper('question');
 
         $question = new Question('<question>Enter password</question>');
@@ -61,13 +63,23 @@ class LoginCommand extends Command
             exit;
         }
 
-        // Print the result depending if they match 
-        if ($user->verifyUsersPassword($password)) { 
+        // Print the result depending if they match
+        if ($user->verifyUsersPassword($password)) {
+            $user->setLastSignOn(new DateTime());
             $io->success("Password verified! Login complete! token not implemented yet");
-        } else { 
+        } else {
             $io->error("Password incorrect! Access denied!");
-        } 
+        }
 
-        return Command::SUCCESS;
+        try {
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+
+            return Command::SUCCESS;
+        } catch (ORMException $exception) {
+            dump($exception);
+        }
+
+
     }
 }

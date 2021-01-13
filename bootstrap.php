@@ -1,11 +1,17 @@
 <?php
 
+use Composer\Autoload\ClassLoader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+
+/**
+ * @var ClassLoader $loader
+ */
+$loader = require __DIR__.'/vendor/autoload.php';
 
 require "./helpers.php";
 

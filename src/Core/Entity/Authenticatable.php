@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Core\Entity;
 
@@ -25,7 +25,7 @@ class Authenticatable extends Entity {
      * Set the value of password
      *
      * @return  self
-     */ 
+     */
     public function setPassword($password)
     {
         $this->password = $password;
@@ -37,7 +37,7 @@ class Authenticatable extends Entity {
      * Get $created_at
      *
      * @return  \DateTime
-     */ 
+     */
     public function getLastSignOn()
     {
         return $this->lastSignOn;
@@ -49,7 +49,7 @@ class Authenticatable extends Entity {
      * @param  \DateTime  $lastSignOn  $created_at
      *
      * @return  self
-     */ 
+     */
     public function setLastSignOn(\DateTime $lastSignOn)
     {
         $this->lastSignOn = $lastSignOn;
@@ -57,24 +57,12 @@ class Authenticatable extends Entity {
         return $this;
     }
 
-    static function askForPasswordCli($prompt = "Enter Password: ") {
-        echo $prompt;
-    
-        system('stty -echo');
-    
-        $password = trim(fgets(STDIN));
-    
-        system('stty echo');
-    
-        return $password;
-    }
-    
     static function hashPassword($plainPassword) {
-      return password_hash($plainPassword, PASSWORD_BCRYPT); 
+      return password_hash($plainPassword, PASSWORD_BCRYPT);
     }
 
     public function verifyUsersPassword($plainPassword) {
-        // Verify the hash against the password entered 
-        return password_verify($plainPassword, $this->password); 
+        // Verify the hash against the password entered
+        return password_verify($plainPassword, $this->password);
     }
 }
