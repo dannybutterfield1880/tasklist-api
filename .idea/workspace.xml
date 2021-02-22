@@ -1,27 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="cbcf7327-dfb9-45a9-996e-662f0b6edbf3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Core/Controller/TaskListController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/tasklist-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tasklist-api.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/console.php" beforeDir="false" afterPath="$PROJECT_DIR$/bin/console.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cli-config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/cli-config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/helpers.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Command/Auth/LoginCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Command/Auth/LoginCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Command/TaskManagement/CommentOnTaskCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Command/TaskManagement/CommentOnTaskCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Command/TasklistManagement/AddTaskToTasklistCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Command/TasklistManagement/AddTaskToTasklistCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Command/TasklistManagement/ListTasklistsTasksCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Command/TasklistManagement/ListTasklistsTasksCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Command/TasklistManagement/NewTasklistCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Command/TasklistManagement/NewTasklistCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Controller/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Controller/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Controller/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Controller/BaseController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Core/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Entity/Attachment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Entity/Attachment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Core/Entity/Authenticatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Entity/Authenticatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Repository/TasklistRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Repository/TasklistRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Entity/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Entity/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Entity/Entity.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Entity/Entity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Entity/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Entity/Task.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Entity/Tasklist.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Entity/Tasklist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/package-versions-deprecated/src/PackageVersions/Versions.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/package-versions-deprecated/src/PackageVersions/Versions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/platform_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/platform_check.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -66,6 +91,17 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/brick/http" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
     </include_path>
   </component>
   <component name="ProjectId" id="1n1z9Xv27uL4Ek3XtQa4mQcwcGn" />
@@ -77,7 +113,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Core/Command/TasklistManagement" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Core/Controller" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -85,10 +121,12 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\tasklist-api\src\Core\Controller" />
       <recent name="C:\wamp64\www\tasklist-api\src\Core\Command\TasklistManagement" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -103,11 +141,27 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1610572235210</updated>
-      <workItem from="1610572237133" duration="3005000" />
+      <workItem from="1610572237133" duration="31780000" />
+      <workItem from="1610918032881" duration="1606000" />
+      <workItem from="1611695083045" duration="13679000" />
+      <workItem from="1611767518888" duration="2399000" />
+      <workItem from="1612122438098" duration="8409000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

@@ -2,103 +2,105 @@
 
 namespace Core\Controller;
 
-use Psr\Log\LoggerInterface;
+use Core\Entity\User;
+use Core\Utils\Container;
+use Monolog\Logger;
 use Brick\Http\Request;
 use Brick\Http\Response;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 
 /**
  * Abstract controller containing common functionality
- * 
+ *
  * Controller method naming convention excluding BaseController
- * 
+ *
  * methodClassAction() i.e ... loginAuthAction() / loadUserAction() / updateTasklistAction()
+ *
  */
-abstract class BaseController {
+abstract class BaseController extends \ReflectionClass {
 
     /**
-     * @var EntityManager $entityManager
+     * @var Container $container
      */
-    private $entityManager;
-
-    /**
-     * @var Request $request
-     */
-    private $request;
-
-    /**
-     * @var Response $response
-     */
-    private $response;
-
-    /**
-     * @var LoggerInterface $logger
-     */
-    private $logger;
-
-    /**
-     * @var Serializer $serializer
-     */
-    private $serializer;
+    public $container;
 
     /**
      * BaseController constructor
      *
-     * @param EntityManager $entityManager
-     * @param Request $request
-     * @param Response $response
-     * @param Serializer $serializer
-     * @param LoggerInterface $logger
+     * @param Container $container
      */
-    public function __construct(
-        EntityManager $entityManager, 
-        Request $request, 
-        Response $response, 
-        Serializer $serializer, 
-        LoggerInterface $logger = null
-    )
+    public function __construct(Container $container)
     {
-        $this->entityManager = $entityManager;
-        $this->request = $request->getCurrent();
-        $this->response = $response;
-        $this->serializer = $serializer;
-        $this->logger = $logger;
+        $this->container = $container;
+    }
+
+    /**
+     * @return array
+     */
+    public function getJsonPostAsArray() : array {
+        return json_decode($this->getRawPost(), true);
+    }
+
+    public function getRawPost() : string {
+        return file_get_contents('php://input');
     }
 
     /**
      * @return EntityManager $entityManager
      */
-    public function getEntityManager() {
-        return $this->entityManager;
+    public function getEntityManager(): EntityManager
+    {
+        return $this->container->getEntityManager();
     }
 
     /**
      * @return Response $response
      */
-    public function getResponse() {
-        return $this->response;
+    public function getResponse(): Response
+    {
+        return $this->container->getResponse();
     }
 
     /**
      * @return Request $request
      */
-    public function getRequest() {
-        return $this->request;
+    public function getRequest(): Request
+    {
+        return $this->container->getRequest();
     }
 
     /**
      * @return Serializer $serializer
      */
-    public function getSerializer() {
-        return $this->serializer;
+    public function getSerializer(): Serializer
+    {
+        return $this->container->getSerializer();
     }
 
     /**
-     * @return LoggerInterface $logger
+     * @return Logger $logger
      */
-    public function getLogger() {
-        return $this->logger;
+    public function getLogger(): Logger
+    {
+        return $this->container->getLogger();
+    }
+
+    /**
+     * @return ValidatorInterface $validator
+     */
+    public function getValidator() : ?ValidatorInterface
+    {
+        return $this->container->getValidator();
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser() : User
+    {
+        return $this->container->getUser();
     }
 }

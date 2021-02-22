@@ -4,48 +4,50 @@ namespace Core\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\Ignore;
 
 
 /**
- * 
+ *
  * @ORM\Entity(repositoryClass="Core\Repository\TaskRepository")
  * @ORM\Table("tasks")
  */
 class Task extends Entity {
-    
+
     /**
      * @ORM\Column(type="string")
-     *
-     * @var String $title 
+     * @Groups({"load_single_task_list"})
+     * @var String $title
      */
     protected $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     *
-     * @var String $description 
+     * @Groups({"load_single_task_list"})
+     * @var String $description
      */
     protected $description;
 
     /**
      * @ORM\ManyToOne(targetEntity="Core\Entity\Tasklist", inversedBy="tasks")
-     * 
+     * @Ignore
      * @var Tasklist $tasklist
      */
     protected $tasklist;
 
     /**
      * @ORM\Column(type="string")
-     * 
-     * options: low | medium | high | urgent | there-is-a-fire
      *
-     * @var String $priority 
+     * options: low | medium | high | urgent | there-is-a-fire
+     * @Groups({"load_single_task_list"})
+     * @var String $priority
      */
     protected $priority = 'low';
 
     /**
      * @ORM\ManyToOne(targetEntity="Core\Entity\User", inversedBy="createdTasks")
-     *
+     * @Groups({"load_single_task_list"})
      * @var User $user
      */
     protected $creator;
@@ -59,14 +61,14 @@ class Task extends Entity {
 
     /**
      * @ORM\OneToMany(targetEntity="Core\Entity\Comment", mappedBy="task")
-     * 
+     *
      * @var ArrayCollection|Comment[] $comments
      */
     protected $comments;
 
     /**
      * @ORM\Column(type="boolean")
-     * 
+     *
      * @var bool $flagged
      */
     protected $flagged = false;
@@ -74,7 +76,7 @@ class Task extends Entity {
     /**
      * @ORM\OneToMany(targetEntity="Core\Entity\Attachment", mappedBy="taskAttachedTo")
      *
-     * @var ArrayCollection|Attachement[] $attachments 
+     * @var ArrayCollection|Attachement[] $attachments
      */
     protected $attachments;
 
@@ -82,7 +84,13 @@ class Task extends Entity {
      * @ORM\Column(type="boolean")
      */
     protected $completed = false;
-    
+
+    /**
+     * @ORM\Column(type="integer", nullable=false)
+     * @Groups({"load_single_task_list"})
+     */
+    protected $index = 0;
+
 
    /**
      * Constructor
@@ -274,11 +282,11 @@ class Task extends Entity {
     /**
      * Set creator.
      *
-     * @param \Core\Entity\User|null $creator
+     * @param User|null $creator
      *
      * @return Task
      */
-    public function setCreator(\Core\Entity\User $creator = null)
+    public function setCreator(User $creator = null)
     {
         $this->creator = $creator;
 
@@ -413,5 +421,29 @@ class Task extends Entity {
     public function getCompleted()
     {
         return $this->completed;
+    }
+
+    /**
+     * Set index.
+     *
+     * @param int $index
+     *
+     * @return Task
+     */
+    public function setIndex($index)
+    {
+        $this->index = $index;
+    
+        return $this;
+    }
+
+    /**
+     * Get index.
+     *
+     * @return int
+     */
+    public function getIndex()
+    {
+        return $this->index;
     }
 }

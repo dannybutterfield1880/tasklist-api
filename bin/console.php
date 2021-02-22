@@ -1,20 +1,18 @@
 #!/usr/bin/env php
-
 <?php
 
 use Composer\Autoload\ClassLoader;
+use Symfony\Component\Console\Application;
+use Doctrine\Common\Annotations\AnnotationRegistry;
+
 use Core\Command\TaskManagement\DeleteTaskCommand;
 use Core\Command\UserManagement\CreateUserCommand;
-
 use Core\Command\Auth\LoginCommand;
 use Core\Command\TasklistManagement\NewTasklistCommand;
 use Core\Command\TasklistManagement\AddTaskToTasklistCommand;
 use Core\Command\TasklistManagement\ListTasklistsTasksCommand;
 use Core\Command\TaskManagement\CommentOnTaskCommand;
 use Core\Command\TaskManagement\ReplyToCommentCommand;
-
-use Symfony\Component\Console\Application;
-use Doctrine\Common\Annotations\AnnotationRegistry;
 
 /**
  * @var ClassLoader $loader

@@ -15,6 +15,13 @@ class Authenticatable extends Entity {
     protected $password;
 
     /**
+     * auto generated key used for encoding and decoding jwt tokens
+     *
+     * @ORM\Column(type="string")
+     */
+    protected $tokenKey;
+
+    /**
      * @var \DateTime $created_at
      *
      * @ORM\Column(type="datetime", nullable=true)
@@ -64,5 +71,24 @@ class Authenticatable extends Entity {
     public function verifyUsersPassword($plainPassword) {
         // Verify the hash against the password entered
         return password_verify($plainPassword, $this->password);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTokenKey() : ?string
+    {
+        return $this->tokenKey;
+    }
+
+    /**
+     * @param mixed $tokenKey
+     * @return Authenticatable
+     */
+    public function setTokenKey($tokenKey): Authenticatable
+    {
+        $this->tokenKey = $tokenKey;
+
+        return $this;
     }
 }

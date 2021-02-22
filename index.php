@@ -1,16 +1,19 @@
 <?php
 
-include __DIR__.'/bootstrap.php';
+use Composer\Autoload\ClassLoader;
+use Core\Utils\Bootstrap;
+use Doctrine\Common\Annotations\AnnotationRegistry;
 
-use Brick\Http\Request;
-use Brick\Http\Response;
+/**
+ * @var ClassLoader $loader
+ */
+$loader = require __DIR__.'/vendor/autoload.php';
+require "./helpers.php";
 
-//parse url string and return controller, method and param
-[$controllerClass, $method, $params] = parseUrlString($_GET['url']);
+//load Doctrine annotations
+AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
 
-/** @var Controller $controller */
-$controller = new $controllerClass($entityManager, new Request, new Response, $serializer);
+$bootstrap = new Bootstrap();
+$bootstrap->execute();
 
-$controller->$method(...$params);
 
-?>

@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '1ab09db764a4bd75efe2931765fe794e8f95e441',
+    'reference' => 'be61d70ff27a1a88ac63e63345d416826d696647',
     'name' => 'dannybutterfield1880/tasklist-api',
   ),
   'versions' => 
@@ -59,7 +59,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '1ab09db764a4bd75efe2931765fe794e8f95e441',
+      'reference' => 'be61d70ff27a1a88ac63e63345d416826d696647',
     ),
     'doctrine/annotations' => 
     array (
@@ -160,12 +160,57 @@ private static $installed = array (
       ),
       'reference' => '9899c16934053880876b920a3b8b02ed2337ac1d',
     ),
+    'firebase/php-jwt' => 
+    array (
+      'pretty_version' => 'v5.2.0',
+      'version' => '5.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'feb0e820b8436873675fd3aca04f3728eb2185cb',
+    ),
+    'monolog/monolog' => 
+    array (
+      'pretty_version' => '2.2.0',
+      'version' => '2.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1cb1cde8e8dd0f70cc0fe51354a59acad9302084',
+    ),
     'ocramius/package-versions' => 
     array (
       'replaced' => 
       array (
         0 => '1.11.99',
       ),
+    ),
+    'phpdocumentor/reflection-common' => 
+    array (
+      'pretty_version' => '2.2.0',
+      'version' => '2.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1d01c49d4ed62f25aa84a747ad35d5a16924662b',
+    ),
+    'phpdocumentor/reflection-docblock' => 
+    array (
+      'pretty_version' => '5.2.2',
+      'version' => '5.2.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '069a785b2141f5bcf49f3e353548dc1cce6df556',
+    ),
+    'phpdocumentor/type-resolver' => 
+    array (
+      'pretty_version' => '1.4.0',
+      'version' => '1.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6a467b8989322d92aa1c8bf2bebcc6e5c2ba55c0',
     ),
     'psr/container' => 
     array (
@@ -189,8 +234,18 @@ private static $installed = array (
     array (
       'provided' => 
       array (
-        0 => '1.0',
+        0 => '1.0.0',
+        1 => '1.0',
       ),
+    ),
+    'symfony/config' => 
+    array (
+      'pretty_version' => 'v5.2.1',
+      'version' => '5.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd0a82d965296083fe463d655a3644cbe49cbaa80',
     ),
     'symfony/console' => 
     array (
@@ -209,6 +264,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '5fa56b4074d1ae755beb55617ddafe6f5d78f665',
+    ),
+    'symfony/filesystem' => 
+    array (
+      'pretty_version' => 'v5.2.1',
+      'version' => '5.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'fa8f8cab6b65e2d99a118e082935344c5ba8c60d',
     ),
     'symfony/polyfill-ctype' => 
     array (
@@ -309,6 +373,24 @@ private static $installed = array (
       ),
       'reference' => '5bd67751d2e3f7d6f770c9154b8fbcb2aa05f7ed',
     ),
+    'symfony/translation-contracts' => 
+    array (
+      'pretty_version' => 'v2.3.0',
+      'version' => '2.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e2eaa60b558f26a4b0354e1bbb25636efaaad105',
+    ),
+    'symfony/validator' => 
+    array (
+      'pretty_version' => 'v5.2.1',
+      'version' => '5.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '312d36715799ca1d195ee8dbf258b31d1a3cbf7b',
+    ),
     'symfony/var-dumper' => 
     array (
       'pretty_version' => 'v5.2.1',
@@ -317,6 +399,24 @@ private static $installed = array (
       array (
       ),
       'reference' => '13e7e882eaa55863faa7c4ad7c60f12f1a8b5089',
+    ),
+    'symfony/yaml' => 
+    array (
+      'pretty_version' => 'v5.2.1',
+      'version' => '5.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '290ea5e03b8cf9b42c783163123f54441fb06939',
+    ),
+    'webmozart/assert' => 
+    array (
+      'pretty_version' => '1.9.1',
+      'version' => '1.9.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'bafc69caeb4d49c39fd0779086c03a3738cbb389',
     ),
   ),
 );
